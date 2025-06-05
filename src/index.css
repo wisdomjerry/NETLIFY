@@ -1,0 +1,142 @@
+/* Make the entire page background dark purple */
+body {
+  background-color: #9f97a9;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #eee;
+}
+
+/* Center the signup container vertically and horizontally */
+.signup-container {
+  height: 100vh;
+  background: url("https://png.pngtree.com/thumb_back/fh260/background/20230615/pngtree-wall-of-movie-posters-on-display-image_2949343.jpg")
+    center/cover no-repeat; /* Change to your actual image path */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.app-branding {
+  text-align: center;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 8px;
+  padding-left: 20px;
+}
+
+.app-name {
+  font-size: 24px;
+  font-weight: bold;
+  color: #151414;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+
+
+
+
+.signup-form {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 40px 30px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(12px);
+  color: #fff;
+  animation: floatIn 1s ease forwards;
+  transform: translateY(30px);
+  opacity: 0;
+}
+
+/* Heading style */
+.signup-form h2 {
+  margin-bottom: 1.5rem;
+  color: #f3e8ff;
+}
+.gradient-text {
+  text-align: center;
+  background: linear-gradient(to right, #fcd34d, #a78bfa);
+  background-clip: text; /* or use an image */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Input fields style */
+.signup-form input {
+  display: block;
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #635179;
+  color: #eee;
+  font-size: 14px;
+}
+
+/* Placeholder text color */
+.signup-form input::placeholder {
+  color: #d6c6f7;
+}
+
+/* Button style */
+.signup-form button {
+  width: 100%;
+  padding: 12px;
+  background-color: #78708e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.signup-form button:hover {
+  background-color: #ffe066;
+}
+
+/* Alternative login section */
+.alternative-login {
+  margin-top: 20px;
+  text-align: center;
+  color: #fff;
+}
+
+/* Login link */
+.login-link {
+  color: #c645aa;
+  text-decoration: underline;
+}
+
+.login-link:hover {
+  text-decoration: underline;
+}
+
+/* Google login button */
+.google-login-btn {
+  margin-top: 10px;
+  padding: 12px;
+  width: 100%;
+  background: #78708e;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+
+.google-login-btn:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
