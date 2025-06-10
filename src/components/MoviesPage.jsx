@@ -232,20 +232,16 @@ const Navbar = ({ user }) => {
 
 
 
-const MoviesPage = () => {
+const MoviesPage = ({ user }) => {
   const [genre, setGenre] = useState("All");
   const [language, setLanguage] = useState("All");
 
-// Simulated logged-in user (for development/testing)
-  const [user] = useState({
-    username: "wisdom256", 
-    email: "wisdom.jeremiah.upti@gmail.com",
-    password: "12345",
-    name: "Wisdom",
-    avatar: "",
-    isAdmin: false,
-  });
 
+// Simulated logged-in user (for development/testing)
+ 
+
+
+  
   const [showProfileMenu, setShowProfileMenu] = useState(false);
 
   const isDeveloper =

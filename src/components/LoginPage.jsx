@@ -2,40 +2,23 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./LoginPage.css";
 
-const LoginPage = ({ onLogin }) => {
+const LoginPage = ({ setUser }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const LoginPage = ({ setUser }) => {
-  const navigate = useNavigate();
-
-  const handleLogin = (e) => {
-    e.preventDefault();
-    const email = e.target.email.value;
-    const password = e.target.password.value;
-
-    setUser({
-      username: "Wisdom",
-      email,
-      password,
-      avatar: "https://your-avatar-url.com",
-    });
-
-    navigate("/movies"); // redirect after login
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Simple mock validation:
+
+    // Mock login logic
     if (username === "wisdom256" && password === "12345") {
-      onLogin({
-        username,
+      setUser({
+        username: "Wisdom",
         email: "wisdom.jeremiah.upti@gmail.com",
-        password,
-        name: "Wisdom",
+        password: "12345",
+        avatar: "https://your-avatar-url.com",
       });
-      navigate("/movies"); // redirect after login
+      navigate("/movies");
     } else {
       alert("Invalid credentials");
     }
@@ -43,12 +26,13 @@ const LoginPage = ({ onLogin }) => {
 
   return (
     <div className="login-page">
-      <div class className="login-form">
+      <div className="login-form">
         <div className="app-branding">
           <img src="/netflix-icon.svg" alt="Movie App Logo" className="logo" />
           <h1 className="app-name">NETLIFY</h1>
         </div>
-        <div class="login-box">
+
+        <div className="login-box">
           <h2 className="gradient-text">Login to Your Account</h2>
           <form onSubmit={handleSubmit} className="login-form">
             <label>
@@ -69,13 +53,13 @@ const LoginPage = ({ onLogin }) => {
                 required
               />
             </label>
-            <button class="small-btn" type="submit">
+            <button className="small-btn" type="submit">
               Login
             </button>
           </form>
           <p>
             Don't have an account?{" "}
-            <a href="/signup" class="signup-link">
+            <a href="/signup" className="signup-link">
               Sign up here
             </a>
           </p>

@@ -12,7 +12,7 @@ import LandingPage from "./components/LandingPage";
 import LoginPage from "./components/LoginPage";
 import SignupForm from "./components/SignupForm";
 import MoviesPage from "./components/MoviesPage";
-import AdminDashboard from "./pages/AdminDashboard";
+import AdminDashboard from "./components/AdminDashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
