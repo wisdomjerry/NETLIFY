@@ -10,14 +10,28 @@ const LoginPage = ({ onLogin }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Mock login logic
- if (username === "wisdom256" && password === "12345") {
+    // Check admin credentials first
+    if (username === "wisdom256" && password === "12345") {
       onLogin({
         username: "Wisdom",
         email: "wisdom.jeremiah.upti@gmail.com",
         password: "12345",
         avatar: "https://your-avatar-url.com",
       });
+      navigate("/movies");
+      return;
+    }
+
+    // Check registered users in localStorage
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const found = users.find(
+      (u) =>
+        (u.username === username || u.email === username) &&
+        u.password === password
+    );
+    if (found) {
+      onLogin(found);
+      localStorage.setItem("user", JSON.stringify(found));
       navigate("/movies");
     } else {
       alert("Invalid credentials");

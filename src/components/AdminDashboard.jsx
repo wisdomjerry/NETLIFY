@@ -25,10 +25,18 @@ const AdminDashboard = () => {
       <aside className="sidebar">
         <h2>Admin Menu</h2>
         <ul>
-          <li><a href="./Dashboard">Dashboard</a></li>
-          <li><a href="./Users">Users</a></li>
-          <li><a href="./Movies">Movies</a></li>
-          <li><a href="./Analytics">Analytics</a></li>
+          <li>
+            <a href="/admin">Dashboard</a>
+          </li>
+          <li>
+            <a href="./Users">Users</a>
+          </li>
+          <li>
+            <a href="./Movies">Movies</a>
+          </li>
+          <li>
+            <a href="./Analytics">Analytics</a>
+          </li>
         </ul>
       </aside>
 
@@ -41,11 +49,27 @@ const AdminDashboard = () => {
           <div className="cards">
             <div className="card">
               <h2>👤 Total Users</h2>
-              <p style={{ fontSize: "2rem", color: "#10b981", fontWeight: "bold" }}>{usersCount}</p>
+              <p
+                style={{
+                  fontSize: "2rem",
+                  color: "#10b981",
+                  fontWeight: "bold",
+                }}
+              >
+                {usersCount}
+              </p>
             </div>
             <div className="card">
               <h2>🎞️ Total Movies</h2>
-              <p style={{ fontSize: "2rem", color: "#3b82f6", fontWeight: "bold" }}>{movies.length}</p>
+              <p
+                style={{
+                  fontSize: "2rem",
+                  color: "#3b82f6",
+                  fontWeight: "bold",
+                }}
+              >
+                {movies.length}
+              </p>
             </div>
           </div>
         </section>
@@ -66,7 +90,9 @@ const AdminDashboard = () => {
                 <tr key={movie.id}>
                   <td>{movie.title}</td>
                   <td>
-                    <span className={`status ${movie.streaming ? "live" : "off"}`}>
+                    <span
+                      className={`status ${movie.streaming ? "live" : "off"}`}
+                    >
                       {movie.streaming ? "Streaming" : "Not Streaming"}
                     </span>
                   </td>

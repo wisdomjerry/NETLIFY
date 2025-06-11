@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { FaUser, FaCog, FaSignOutAlt, FaTachometerAlt } from "react-icons/fa";
-
+import { useNavigate } from "react-router-dom";
 import "./MoviesPage.css"; // custom styles for Netflix look
 
 const heroMovies = [
@@ -209,9 +209,6 @@ const Navbar = ({ user }) => {
             <a href="/profile">
               <FaUser /> View Profile
             </a>
-            <a href="/settings">
-              <FaCog /> Settings
-            </a>
 
             {isAdmin && (
               <a href="/admin">
@@ -234,7 +231,7 @@ const MoviesPage = ({ user }) => {
   const [genre, setGenre] = useState("All");
   const [language, setLanguage] = useState("All");
   const [showProfileMenu, setShowProfileMenu] = useState(false);
-
+  const navigate = useNavigate();
   // This will only show the admin dashboard link for the admin user
   const isDeveloper =
     user.email === "wisdom.jeremiah.upti@gmail.com" &&
@@ -243,6 +240,12 @@ const MoviesPage = ({ user }) => {
   // Get the first letter of the current user's username, fallback to "?"
   const firstLetter = user?.username?.charAt(0)?.toUpperCase() || "?";
 
+  // Logout handler
+  const handleLogout = (e) => {
+    e.preventDefault();
+    localStorage.removeItem("user");
+    navigate("/login");
+  };
   return (
     <div className="movies-page">
       {/* Top Right Profile */}
@@ -305,7 +308,11 @@ const MoviesPage = ({ user }) => {
                 <FaTachometerAlt /> Admin Dashboard
               </a>
             )}
-            <a href="/logout" style={{ display: "block" }}>
+            <a
+              href="#"
+              onClick={handleLogout} // <-- Use the handler here
+              style={{ display: "block" }}
+            >
               <FaSignOutAlt /> Logout
             </a>
           </div>
