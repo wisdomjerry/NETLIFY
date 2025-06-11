@@ -17,7 +17,9 @@ import AnalyticsPage from "./components/AnalyticsPage";
 import UsersPage from "./components/UsersPage";
 
 function App() {
-  const [showSplash, setShowSplash] = useState(false);
+ const [showSplash, setShowSplash] = useState(() => {
+    return !localStorage.getItem("splashShown");
+  });
 
   // Use null for unauthenticated user
   const [user, setUser] = useState(null);

@@ -20,6 +20,14 @@ const SignupForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // Save user to localStorage
+    localStorage.setItem("user", JSON.stringify(form));
+
+    // Optionally, add to a users array for admin viewing
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    users.push({ ...form, joined: new Date().toISOString(), active: true });
+    localStorage.setItem("users", JSON.stringify(users));
+
     console.log("User submitted:", form);
 
     // Redirect to /movies after signup
@@ -37,7 +45,7 @@ const SignupForm = () => {
         <h1 className="app-name">NETLIFY</h1>
       </div>
       <form onSubmit={handleSubmit} className="signup-form">
-        <h2 class="gradient-text">Create an Account</h2>
+        <h2 className="gradient-text">Create an Account</h2>
 
         <input
           name="username"

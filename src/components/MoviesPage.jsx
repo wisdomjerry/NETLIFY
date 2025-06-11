@@ -233,14 +233,15 @@ const Navbar = ({ user }) => {
 const MoviesPage = ({ user }) => {
   const [genre, setGenre] = useState("All");
   const [language, setLanguage] = useState("All");
-
-  // Simulated logged-in user (for development/testing)
-
   const [showProfileMenu, setShowProfileMenu] = useState(false);
 
+  // This will only show the admin dashboard link for the admin user
   const isDeveloper =
     user.email === "wisdom.jeremiah.upti@gmail.com" &&
     user.password === "12345";
+
+  // Get the first letter of the current user's username, fallback to "?"
+  const firstLetter = user?.username?.charAt(0)?.toUpperCase() || "?";
 
   return (
     <div className="movies-page">
@@ -262,9 +263,11 @@ const MoviesPage = ({ user }) => {
             justifyContent: "center",
             alignItems: "center",
             cursor: "pointer",
+            fontWeight: "bold",
+            fontSize: "1.2rem",
           }}
         >
-          {user?.username?.charAt(0).toUpperCase()}
+          {firstLetter}
         </div>
 
         {showProfileMenu && (
