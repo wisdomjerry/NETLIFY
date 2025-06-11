@@ -25,10 +25,10 @@ const AdminDashboard = () => {
       <aside className="sidebar">
         <h2>Admin Menu</h2>
         <ul>
-          <a href="./Dashboard">Dashboard</a>
-          <a href="./Users">Users</a>
-          <a href="./Movies">Movies</a>
-          <a href="./Analytics">Analytics</a>
+          <li><a href="./Dashboard">Dashboard</a></li>
+          <li><a href="./Users">Users</a></li>
+          <li><a href="./Movies">Movies</a></li>
+          <li><a href="./Analytics">Analytics</a></li>
         </ul>
       </aside>
 

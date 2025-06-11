@@ -22,7 +22,6 @@ const UsersPage = () => {
           <li><a href="/users">Users</a></li>
           <li><a href="/movies">Movies</a></li>
           <li><a href="/analytics">Analytics</a></li>
-          <li><a href="/settings">Settings</a></li>
         </ul>
       </aside>
 
