@@ -230,18 +230,12 @@ const Navbar = ({ user }) => {
   // Inside Navbar component
 };
 
-
-
 const MoviesPage = ({ user }) => {
   const [genre, setGenre] = useState("All");
   const [language, setLanguage] = useState("All");
 
+  // Simulated logged-in user (for development/testing)
 
-// Simulated logged-in user (for development/testing)
- 
-
-
-  
   const [showProfileMenu, setShowProfileMenu] = useState(false);
 
   const isDeveloper =
@@ -251,7 +245,10 @@ const MoviesPage = ({ user }) => {
   return (
     <div className="movies-page">
       {/* Top Right Profile */}
-      <div className="top-profile" style={{ position: "absolute", top: "1rem", right: "1rem", zIndex: 50 }}>
+      <div
+        className="top-profile"
+        style={{ position: "absolute", top: "1rem", right: "1rem", zIndex: 50 }}
+      >
         <div
           className="avatar"
           onClick={() => setShowProfileMenu(!showProfileMenu)}
@@ -285,14 +282,23 @@ const MoviesPage = ({ user }) => {
               zIndex: 50,
             }}
           >
-            <a href="/profile" style={{ display: "block", marginBottom: "8px" }}>
+            <a
+              href="/profile"
+              style={{ display: "block", marginBottom: "8px" }}
+            >
               <FaUser /> Profile
             </a>
-            <a href="/settings" style={{ display: "block", marginBottom: "8px" }}>
+            <a
+              href="/settings"
+              style={{ display: "block", marginBottom: "8px" }}
+            >
               <FaCog /> Settings
             </a>
             {isDeveloper && (
-              <a href="/admin" style={{ display: "block", marginBottom: "8px" }}>
+              <a
+                href="/admin"
+                style={{ display: "block", marginBottom: "8px" }}
+              >
                 <FaTachometerAlt /> Admin Dashboard
               </a>
             )}
@@ -341,19 +347,27 @@ const MoviesPage = ({ user }) => {
 
       <div className="mobile-taskbar">
         <button>
-          <span role="img" aria-label="home">🏠</span>
+          <span role="img" aria-label="home">
+            🏠
+          </span>
           <p>Home</p>
         </button>
         <button>
-          <span role="img" aria-label="search">🔍</span>
+          <span role="img" aria-label="search">
+            🔍
+          </span>
           <p>Search</p>
         </button>
         <button>
-          <span role="img" aria-label="watchlist">📄</span>
+          <span role="img" aria-label="watchlist">
+            📄
+          </span>
           <p>Watchlist</p>
         </button>
         <button>
-          <span role="img" aria-label="downloads">⬇️</span>
+          <span role="img" aria-label="downloads">
+            ⬇️
+          </span>
           <p>Downloads</p>
         </button>
       </div>

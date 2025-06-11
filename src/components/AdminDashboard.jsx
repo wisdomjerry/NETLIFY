@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./AdminDashboard.css";
 
 const mockMovies = [
   { id: 1, title: "The Dark Knight", streaming: true },
@@ -19,49 +20,75 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div className="p-4 md:p-8">
-      <h1 className="text-3xl font-bold mb-4">🎬 Netlify Admin Dashboard</h1>
+    <div className="dashboard-container">
+      {/* Sidebar */}
+      <aside className="sidebar">
+        <h2>Admin Menu</h2>
+        <ul>
+          <a href="./Dashboard">Dashboard</a>
+          <a href="./Users">Users</a>
+          <a href="./Movies">Movies</a>
+          <a href="./Analytics">Analytics</a>
+        </ul>
+      </aside>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        <div className="bg-white shadow rounded-lg p-4">
-          <h2 className="text-lg font-semibold">👤 Total Users</h2>
-          <p className="text-2xl font-bold text-green-600 mt-2">{usersCount}</p>
-        </div>
+      {/* Main Dashboard */}
+      <main className="dashboard-main">
+        <h1>🎬 Netlify Admin Dashboard</h1>
 
-        <div className="bg-white shadow rounded-lg p-4 col-span-2">
-          <h2 className="text-lg font-semibold">🎞️ Movie Management</h2>
-          <ul className="mt-3 space-y-3">
-            {movies.map((movie) => (
-              <li
-                key={movie.id}
-                className="flex justify-between items-center border-b pb-2"
-              >
-                <div>
-                  <p className="font-medium">{movie.title}</p>
-                  <p
-                    className={`text-sm ${
-                      movie.streaming ? "text-green-500" : "text-red-500"
-                    }`}
-                  >
-                    {movie.streaming ? "Streaming" : "Not Streaming"}
-                  </p>
-                </div>
-                <button
-                  className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded"
-                  onClick={() => toggleStreaming(movie.id)}
-                >
-                  Toggle
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
+        {/* Analytics Section */}
+        <section className="analytics-section">
+          <div className="cards">
+            <div className="card">
+              <h2>👤 Total Users</h2>
+              <p style={{ fontSize: "2rem", color: "#10b981", fontWeight: "bold" }}>{usersCount}</p>
+            </div>
+            <div className="card">
+              <h2>🎞️ Total Movies</h2>
+              <p style={{ fontSize: "2rem", color: "#3b82f6", fontWeight: "bold" }}>{movies.length}</p>
+            </div>
+          </div>
+        </section>
 
-        <div className="bg-white shadow rounded-lg p-4 lg:col-span-3">
-          <h2 className="text-lg font-semibold">📊 Analytics Overview</h2>
-          <p className="mt-2 text-gray-600">More detailed charts coming soon...</p>
-        </div>
-      </div>
+        {/* Movies Section */}
+        <section className="movies-section">
+          <h2>Movie Management</h2>
+          <table className="movie-table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Status</th>
+                <th>Toggle</th>
+              </tr>
+            </thead>
+            <tbody>
+              {movies.map((movie) => (
+                <tr key={movie.id}>
+                  <td>{movie.title}</td>
+                  <td>
+                    <span className={`status ${movie.streaming ? "live" : "off"}`}>
+                      {movie.streaming ? "Streaming" : "Not Streaming"}
+                    </span>
+                  </td>
+                  <td>
+                    <button onClick={() => toggleStreaming(movie.id)}>
+                      Toggle
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </section>
+
+        {/* Analytics Overview */}
+        <section className="analytics-section" style={{ marginTop: "30px" }}>
+          <div className="card">
+            <h2>📊 Analytics Overview</h2>
+            <p>More detailed charts coming soon...</p>
+          </div>
+        </section>
+      </main>
     </div>
   );
 };

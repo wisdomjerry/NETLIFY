@@ -1,3 +1,4 @@
+
 /* Make the entire page background dark purple */
 body {
   background-color: #9f97a9;
@@ -39,10 +40,6 @@ body {
   color: #151414;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
 }
-
-
-
-
 
 .signup-form {
   background: rgba(255, 255, 255, 0.05);

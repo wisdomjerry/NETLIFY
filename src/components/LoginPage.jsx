@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./LoginPage.css";
 
-const LoginPage = ({ setUser }) => {
+const LoginPage = ({ onLogin }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -11,8 +11,8 @@ const LoginPage = ({ setUser }) => {
     e.preventDefault();
 
     // Mock login logic
-    if (username === "wisdom256" && password === "12345") {
-      setUser({
+ if (username === "wisdom256" && password === "12345") {
+      onLogin({
         username: "Wisdom",
         email: "wisdom.jeremiah.upti@gmail.com",
         password: "12345",
