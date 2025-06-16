@@ -1,5 +1,11 @@
-import React, { useEffect, useState, useRef } from "react";
-import { FaUser, FaCog, FaSignOutAlt, FaTachometerAlt } from "react-icons/fa";
+import React, { useEffect, useState } from "react";
+import {
+  FaUser,
+  FaCog,
+  FaSignOutAlt,
+  FaTachometerAlt,
+  FaSearch,
+} from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import "./MoviesPage.css"; // custom styles for Netflix look
 
@@ -86,66 +92,6 @@ const dummyMovies = [
   },
 ];
 
-const Section = ({ title }) => {
-  const [scrollPos, setScrollPos] = useState(0);
-  const [myList, setMyList] = useState(() => {
-    const saved = localStorage.getItem("myMovieList");
-    return saved ? JSON.parse(saved) : [];
-  });
-
-  const rowRef = useRef(null);
-
-  const scroll = (direction) => {
-    const scrollAmount = 300;
-    if (rowRef.current) {
-      const newPos =
-        direction === "left"
-          ? scrollPos - scrollAmount
-          : scrollPos + scrollAmount;
-      rowRef.current.scrollTo({ left: newPos, behavior: "smooth" });
-      setScrollPos(newPos);
-    }
-  };
-
-  const addToMyList = (movie) => {
-    if (myList.find((m) => m.title === movie.title)) return;
-    const updatedList = [...myList, movie];
-    setMyList(updatedList);
-    localStorage.setItem("myMovieList", JSON.stringify(updatedList));
-  };
-
-  return (
-    <div className="movie-section">
-      <h2 className="section-title">{title}</h2>
-      <div className="scroll-buttons">
-        <button onClick={() => scroll("left")}>&lt;</button>
-        <button onClick={() => scroll("right")}>&gt;</button>
-      </div>
-      <div className="movie-row" ref={rowRef}>
-        {dummyMovies.map((movie, idx) => (
-          <div key={idx} className="movie-card">
-            <img src={movie.src} alt={movie.title} className="movie-image" />
-            <div className="movie-info">
-              <h4>{movie.title}</h4>
-              <p className="movie-genre">{movie.genre}</p>
-              <p className="movie-desc">{movie.description}</p>
-              <button
-                className="add-btn"
-                onClick={() => addToMyList(movie)}
-                disabled={myList.find((m) => m.title === movie.title)}
-              >
-                {myList.find((m) => m.title === movie.title)
-                  ? "Added"
-                  : "+ Add to My List"}
-              </button>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
 const Navbar = ({ user }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -227,14 +173,16 @@ const Navbar = ({ user }) => {
       </div>
     </nav>
   );
-  // Inside Navbar component
 };
 
 const MoviesPage = ({ user }) => {
   const [genre, setGenre] = useState("All");
   const [language, setLanguage] = useState("All");
   const [showProfileMenu, setShowProfileMenu] = useState(false);
- const navigate = useNavigate(); 
+  const [search, setSearch] = useState("");
+  const [searchFocus, setSearchFocus] = useState(false);
+  const navigate = useNavigate();
+
   // This will only show the admin dashboard link for the admin user
   const isDeveloper =
     user.email === "wisdom.jeremiah.upti@gmail.com" &&
@@ -243,12 +191,26 @@ const MoviesPage = ({ user }) => {
   // Get the first letter of the current user's username, fallback to "?"
   const firstLetter = user?.username?.charAt(0)?.toUpperCase() || "?";
 
-   // Logout handler
-   const handleLogout = (e) => {
+  // Logout handler
+  const handleLogout = (e) => {
     e.preventDefault();
     localStorage.removeItem("user");
     navigate("/login");
   };
+
+  // Filter movies by search and genre/language
+  const filteredMovies = dummyMovies.filter(
+    (movie) =>
+      (genre === "All" || movie.genre === genre) &&
+      (language === "All" || !movie.language || movie.language === language) &&
+      movie.title.toLowerCase().includes(search.toLowerCase())
+  );
+
+  // Mobile taskbar navigation
+  const handleMobileNav = (route) => {
+    navigate(route);
+  };
+
   return (
     <div className="movies-page">
       {/* Top Right Profile */}
@@ -297,7 +259,12 @@ const MoviesPage = ({ user }) => {
             >
               <FaUser /> Profile
             </a>
-           
+            <a
+              href="/settings"
+              style={{ display: "block", marginBottom: "8px" }}
+            >
+              <FaCog /> Settings
+            </a>
             {isDeveloper && (
               <a
                 href="/admin"
@@ -306,11 +273,7 @@ const MoviesPage = ({ user }) => {
                 <FaTachometerAlt /> Admin Dashboard
               </a>
             )}
-             <a
-              href="#"
-              onClick={handleLogout} // <-- Use the handler here
-              style={{ display: "block" }}
-            >
+            <a href="#" onClick={handleLogout} style={{ display: "block" }}>
               <FaSignOutAlt /> Logout
             </a>
           </div>
@@ -320,6 +283,49 @@ const MoviesPage = ({ user }) => {
       <Navbar user={user} />
 
       <HeroBanner />
+
+      {/* Responsive & Creative Search Bar */}
+      <div
+        className="search-bar-container"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          margin: "2rem 0 1rem 0",
+        }}
+      >
+        <div
+          className={`search-bar${searchFocus ? " focused" : ""}`}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            background: "#222",
+            borderRadius: "2rem",
+            padding: "0.5rem 1rem",
+            boxShadow: searchFocus ? "0 2px 12px rgba(0,0,0,0.2)" : "none",
+            transition: "box-shadow 0.3s, width 0.3s",
+            width: searchFocus ? "350px" : "220px",
+            maxWidth: "90vw",
+          }}
+        >
+          <FaSearch style={{ color: "#888", marginRight: "0.5rem" }} />
+          <input
+            type="text"
+            placeholder="Search movies..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            onFocus={() => setSearchFocus(true)}
+            onBlur={() => setSearchFocus(false)}
+            style={{
+              border: "none",
+              outline: "none",
+              background: "transparent",
+              color: "#fff",
+              fontSize: "1rem",
+              width: "100%",
+            }}
+          />
+        </div>
+      </div>
 
       <div className="filters">
         <select
@@ -348,35 +354,99 @@ const MoviesPage = ({ user }) => {
         </select>
       </div>
 
-      <Section title="Trending Now" />
-      <Section title="Popular on Netlify" />
-      <Section title="Top Picks For You" />
-      <Section title="Action Movies" />
+      {/* Movie Section using filteredMovies */}
+      <div className="movie-section">
+        <h2 className="section-title">All Movies</h2>
+        <div className="movie-row">
+          {filteredMovies.length === 0 ? (
+            <p style={{ color: "#fff", textAlign: "center", width: "100%" }}>
+              No movies found.
+            </p>
+          ) : (
+            filteredMovies.map((movie, idx) => (
+              <div key={idx} className="movie-card">
+                <img
+                  src={movie.src}
+                  alt={movie.title}
+                  className="movie-image"
+                />
+                <div className="movie-info">
+                  <h4>{movie.title}</h4>
+                  <p className="movie-genre">{movie.genre}</p>
+                  <p className="movie-desc">{movie.description}</p>
+                  <button
+                    className="add-btn"
+                    // ...add to my list logic...
+                  >
+                    + Add to My List
+                  </button>
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+      </div>
 
-      <div className="mobile-taskbar">
-        <button>
-          <span role="img" aria-label="home">
+      {/* Mobile Taskbar */}
+      <div
+        className="mobile-taskbar"
+        style={{
+          position: "fixed",
+          bottom: 0,
+          left: 0,
+          width: "100%",
+          background: "#181818",
+          display: "flex",
+          justifyContent: "space-around",
+          alignItems: "center",
+          padding: "0.5rem 0",
+          zIndex: 100,
+          borderTop: "1px solid #222",
+        }}
+      >
+        <button
+          onClick={() => handleMobileNav("/movies")}
+          style={{ background: "none", border: "none", color: "#fff", flex: 1 }}
+        >
+          <span role="img" aria-label="home" style={{ fontSize: "1.5rem" }}>
             🏠
           </span>
-          <p>Home</p>
+          <p style={{ margin: 0, fontSize: "0.8rem" }}>Home</p>
         </button>
-        <button>
-          <span role="img" aria-label="search">
+        <button
+          onClick={() => handleMobileNav("/imdb")}
+          style={{ background: "none", border: "none", color: "#fff", flex: 1 }}
+        >
+          <span role="img" aria-label="search" style={{ fontSize: "1.5rem" }}>
             🔍
           </span>
-          <p>Search</p>
+          <p style={{ margin: 0, fontSize: "0.8rem" }}>Search</p>
         </button>
-        <button>
-          <span role="img" aria-label="watchlist">
+        <button
+          onClick={() => handleMobileNav("/watchlist")}
+          style={{ background: "none", border: "none", color: "#fff", flex: 1 }}
+        >
+          <span
+            role="img"
+            aria-label="watchlist"
+            style={{ fontSize: "1.5rem" }}
+          >
             📄
           </span>
-          <p>Watchlist</p>
+          <p style={{ margin: 0, fontSize: "0.8rem" }}>Watchlist</p>
         </button>
-        <button>
-          <span role="img" aria-label="downloads">
+        <button
+          onClick={() => handleMobileNav("/downloads")}
+          style={{ background: "none", border: "none", color: "#fff", flex: 1 }}
+        >
+          <span
+            role="img"
+            aria-label="downloads"
+            style={{ fontSize: "1.5rem" }}
+          >
             ⬇️
           </span>
-          <p>Downloads</p>
+          <p style={{ margin: 0, fontSize: "0.8rem" }}>Downloads</p>
         </button>
       </div>
     </div>

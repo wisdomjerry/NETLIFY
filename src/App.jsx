@@ -6,6 +6,8 @@ import {
   Navigate,
 } from "react-router-dom";
 
+import ImdbMovies from "./components/ImdbMovies";
+
 import SplashScreen from "./components/SplashScreen";
 import LandingPage from "./components/LandingPage";
 import LoginPage from "./components/LoginPage";
@@ -17,7 +19,7 @@ import AnalyticsPage from "./components/AnalyticsPage";
 import UsersPage from "./components/UsersPage";
 
 function App() {
- const [showSplash, setShowSplash] = useState(() => {
+  const [showSplash, setShowSplash] = useState(() => {
     return !localStorage.getItem("splashShown");
   });
 
@@ -67,6 +69,8 @@ function App() {
           />
           <Route path="/analytics" element={<AnalyticsPage />} />
           <Route path="/users" element={<UsersPage />} />
+          {/* Add the IMDB Movies route below */}
+          <Route path="/imdb" element={<ImdbMovies />} />
         </Routes>
       )}
     </Router>
