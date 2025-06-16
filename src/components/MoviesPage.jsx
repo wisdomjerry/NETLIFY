@@ -209,6 +209,9 @@ const Navbar = ({ user }) => {
             <a href="/profile">
               <FaUser /> View Profile
             </a>
+            <a href="/settings">
+              <FaCog /> Settings
+            </a>
 
             {isAdmin && (
               <a href="/admin">
@@ -231,7 +234,7 @@ const MoviesPage = ({ user }) => {
   const [genre, setGenre] = useState("All");
   const [language, setLanguage] = useState("All");
   const [showProfileMenu, setShowProfileMenu] = useState(false);
-  const navigate = useNavigate();
+ const navigate = useNavigate(); 
   // This will only show the admin dashboard link for the admin user
   const isDeveloper =
     user.email === "wisdom.jeremiah.upti@gmail.com" &&
@@ -240,8 +243,8 @@ const MoviesPage = ({ user }) => {
   // Get the first letter of the current user's username, fallback to "?"
   const firstLetter = user?.username?.charAt(0)?.toUpperCase() || "?";
 
-  // Logout handler
-  const handleLogout = (e) => {
+   // Logout handler
+   const handleLogout = (e) => {
     e.preventDefault();
     localStorage.removeItem("user");
     navigate("/login");
@@ -294,12 +297,7 @@ const MoviesPage = ({ user }) => {
             >
               <FaUser /> Profile
             </a>
-            <a
-              href="/settings"
-              style={{ display: "block", marginBottom: "8px" }}
-            >
-              <FaCog /> Settings
-            </a>
+           
             {isDeveloper && (
               <a
                 href="/admin"
@@ -308,7 +306,7 @@ const MoviesPage = ({ user }) => {
                 <FaTachometerAlt /> Admin Dashboard
               </a>
             )}
-            <a
+             <a
               href="#"
               onClick={handleLogout} // <-- Use the handler here
               style={{ display: "block" }}
