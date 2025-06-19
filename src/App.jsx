@@ -5,14 +5,15 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+import MovieDetail from "./components/MovieDetail";
 
-import ImdbMovies from "./components/ImdbMovies";
+
 
 import SplashScreen from "./components/SplashScreen";
 import LandingPage from "./components/LandingPage";
 import LoginPage from "./components/LoginPage";
 import SignupForm from "./components/SignupForm";
-import MoviesPage from "./components/MoviesPage";
+import AllMovies from "./components/allMovies";
 import AdminDashboard from "./components/AdminDashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AnalyticsPage from "./components/AnalyticsPage";
@@ -31,10 +32,12 @@ function App() {
     if (savedUser) setUser(JSON.parse(savedUser));
   }, []);
 
-  const handleLogin = (userData) => {
-    setUser(userData);
-    localStorage.setItem("user", JSON.stringify(userData));
-  };
+const handleLogin = (userData) => {
+  setUser(userData);
+  localStorage.setItem("user", JSON.stringify(userData));
+};
+
+
 
   const handleSplashComplete = () => {
     setShowSplash(false);
@@ -53,7 +56,7 @@ function App() {
             path="/movies"
             element={
               user ? (
-                <MoviesPage user={user} />
+                <AllMovies user={user} />
               ) : (
                 <Navigate to="/login" replace />
               )
@@ -70,7 +73,8 @@ function App() {
           <Route path="/analytics" element={<AnalyticsPage />} />
           <Route path="/users" element={<UsersPage />} />
           {/* Add the IMDB Movies route below */}
-          <Route path="/imdb" element={<ImdbMovies />} />
+          <Route path="/imdb" element={<AllMovies />} />
+           <Route path="/movie/:id" element={<MovieDetail />} />
         </Routes>
       )}
     </Router>

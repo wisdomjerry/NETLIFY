@@ -6,6 +6,7 @@ const SignupForm = () => {
 
   // This creates a "state" to keep track of what the user types in the form
   const [form, setForm] = useState({
+    name: "", // <-- added this line
     username: "",
     email: "",
     password: "",
@@ -46,6 +47,13 @@ const SignupForm = () => {
       </div>
       <form onSubmit={handleSubmit} className="signup-form">
         <h2 className="gradient-text">Create an Account</h2>
+
+        <input
+          name="name" // <-- added this input
+          placeholder="Full Name"
+          onChange={handleChange}
+          required
+        />
 
         <input
           name="username"

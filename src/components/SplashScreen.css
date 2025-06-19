@@ -83,3 +83,33 @@
     transform: translateY(0);
   }
 }
+
+/* ... your original styles remain untouched ... */
+
+/* Responsive Enhancements */
+@media (max-width: 768px) {
+  .splash-title {
+    font-size: 2rem;
+    letter-spacing: 1.5px;
+  }
+
+  .splash-logo {
+    width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .splash-title {
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+  }
+
+  .splash-logo {
+    width: 60px;
+  }
+
+  .splash-overlay {
+    padding: 0.5rem;
+  }
+}
+

@@ -59,3 +59,59 @@
   font-weight: bold;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
 }
+
+/* Responsive Enhancements for Landing Page */
+@media (max-width: 768px) {
+  .landing-container {
+    padding: 2rem 1rem;
+    background-position: center;
+  }
+
+  .landing-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .landing-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .landing-buttons .btn-login,
+  .landing-buttons .btn-signup {
+    padding: 0.6rem 1.2rem;
+    margin: 0.3rem;
+    font-size: 0.95rem;
+  }
+
+  .netflix-logo {
+    width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .landing-title {
+    font-size: 1.5rem;
+  }
+
+  .landing-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .landing-buttons .btn-login,
+  .landing-buttons .btn-signup {
+    display: block;
+    width: 100%;
+    margin: 0.5rem 0;
+    font-size: 1rem;
+  }
+
+  .landing-header {
+    gap: 0.3rem;
+  }
+
+  .netflix-logo {
+    width: 70px;
+  }
+}
+

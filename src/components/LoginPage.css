@@ -271,3 +271,77 @@ input {
 .login-footer a:hover {
   color: #f3e8ff;
 }
+
+
+/* Responsive Enhancements */
+@media (max-width: 768px) {
+  .logo {
+    padding-left: 0;
+    margin: 0 auto 10px auto;
+    display: block;
+  }
+
+  .app-name {
+    font-size: 20px;
+  }
+
+  .login-container {
+    width: 90%;
+    padding: 30px 20px;
+  }
+
+  .login-box {
+    padding: 30px 20px;
+  }
+
+  .login-form input,
+  .login-form button {
+    font-size: 0.95rem;
+  }
+
+  .login-button {
+    font-size: 1rem;
+    padding: 10px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-name {
+    font-size: 18px;
+  }
+
+  .login-container {
+    padding: 20px 15px;
+    width: 95%;
+  }
+
+  .login-box {
+    padding: 20px 15px;
+  }
+
+  .login-form {
+    gap: 14px;
+  }
+
+  .login-form input {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .login-form label {
+    font-size: 0.85rem;
+  }
+
+  .login-button {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+
+  .signup-prompt {
+    font-size: 0.85rem;
+  }
+
+  .login-footer {
+    font-size: 0.85rem;
+  }
+}

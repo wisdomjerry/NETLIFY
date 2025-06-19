@@ -10,19 +10,22 @@ const LoginPage = ({ onLogin }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Check admin credentials first
+    // ✅ Admin login check
     if (username === "wisdom256" && password === "12345") {
-      onLogin({
-        username: "Wisdom",
+      const adminUser = {
+        username: "wisdom256",
         email: "wisdom.jeremiah.upti@gmail.com",
         password: "12345",
-        avatar: "https://your-avatar-url.com",
-      });
+        name: "Wisdom", // ✅ Needed for banner icon
+        isAdmin: true,
+      };
+      onLogin(adminUser); // ✅ This line is crucial
+      localStorage.setItem("user", JSON.stringify(adminUser));
       navigate("/movies");
       return;
     }
 
-    // Check registered users in localStorage
+    // ✅ Check normal user login
     const users = JSON.parse(localStorage.getItem("users")) || [];
     const found = users.find(
       (u) =>
@@ -30,7 +33,7 @@ const LoginPage = ({ onLogin }) => {
         u.password === password
     );
     if (found) {
-      onLogin(found);
+      onLogin(found); // ✅ Pass user to App
       localStorage.setItem("user", JSON.stringify(found));
       navigate("/movies");
     } else {

@@ -137,3 +137,67 @@ body {
 .google-login-btn:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
+
+
+/* Responsive Enhancements */
+@media (max-width: 768px) {
+  .signup-container {
+    padding: 40px 20px;
+    background-position: center;
+  }
+
+  .signup-form {
+    max-width: 90%;
+    padding: 30px 20px;
+  }
+
+  .app-name {
+    font-size: 20px;
+  }
+
+  .logo {
+    padding-left: 0;
+    margin: 0 auto 10px auto;
+    display: block;
+  }
+
+  .signup-form input {
+    font-size: 0.95rem;
+    padding: 10px 12px;
+  }
+
+  .signup-form button,
+  .google-login-btn {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .signup-form {
+    padding: 25px 15px;
+  }
+
+  .signup-form h2 {
+    font-size: 1.4rem;
+  }
+
+  .signup-form input {
+    font-size: 0.85rem;
+    padding: 9px;
+  }
+
+  .signup-form button,
+  .google-login-btn {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  .app-name {
+    font-size: 18px;
+  }
+
+  .alternative-login {
+    font-size: 0.9rem;
+  }
+}

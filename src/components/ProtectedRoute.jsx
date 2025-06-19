@@ -1,12 +1,15 @@
-import React from "react";
 import { Navigate } from "react-router-dom";
 
-const ProtectedRoute = ({ user, children }) => {
-  const isDeveloper =
-    user?.email === "wisdom.jeremiah.upti@gmail.com" && user?.password === "12345";
+const ProtectedRoute = ({ children }) => {
+  const user = JSON.parse(localStorage.getItem("user")); // or from context
 
-  if (!isDeveloper) {
-    return <Navigate to="/" replace />;
+  const isAdmin =
+    user?.username === "wisdom256" &&
+    user?.email === "wisdom.jeremiah.upti@gmail.com" &&
+    user?.password === "12345";
+
+  if (!isAdmin) {
+    return <Navigate to="/login" />;
   }
 
   return children;
