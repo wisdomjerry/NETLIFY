@@ -2,22 +2,21 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; // <-- added this import
 
 const SignupForm = () => {
-  const navigate = useNavigate(); // <-- added this line
+  const navigate = useNavigate(); //<--   
 
-  // This creates a "state" to keep track of what the user types in the form
+    
   const [form, setForm] = useState({
-    name: "", // <-- added this line
+    name: "", // <--   
     username: "",
     email: "",
     password: "",
   });
 
-  // This runs whenever the user types something in an input field
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  // This runs when the user submits the form (clicks Sign Up)
+  
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -31,8 +30,8 @@ const SignupForm = () => {
 
     console.log("User submitted:", form);
 
-    // Redirect to /movies after signup
-    navigate("/movies");
+    
+    navigate("/login");
   };
 
   const handleGoogleLogin = () => {

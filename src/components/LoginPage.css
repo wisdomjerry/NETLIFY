@@ -20,10 +20,6 @@
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
 }
 
-
-
-
-
 .login-page {
   height: 100vh;
   background: linear-gradient(135deg, #6a0dad 0%, #4b0082 100%);
@@ -38,19 +34,20 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  padding: 20px; /* Add space for smaller screens */
 }
 
 .login-form h2 {
   text-align: center;
-  font-size: 1.8rem;
-  margin-bottom: 24px;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
   color: #f3e8ff;
 }
 
 .gradient-text {
   display: inline-block;
   background: linear-gradient(to right, #fcd34d, #a78bfa);
-  background-clip: text; /* or use an image */
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -61,11 +58,12 @@
   text-align: center;
   color: #f5e1ff;
 }
+
 .login-box {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 16px;
-  padding: 40px 30px;
+  padding: 25px 20px;
   width: 100%;
   max-width: 400px;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
@@ -87,23 +85,17 @@
   }
 }
 
-.login-box h2 {
-  text-align: center;
-  margin-bottom: 24px;
-  font-size: 1.8rem;
-  color: #f3e8ff;
-}
-
 .login-form label {
   display: block;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   color: #eee;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
 }
 
 .login-form input {
   width: 100%;
-  padding: 10px 14px;
+  padding: 8px 12px;
+    font-size: 0.95rem;
   margin-top: 6px;
   border: none;
   border-radius: 8px;
@@ -114,7 +106,8 @@
 
 .login-form button {
   width: 100%;
-  padding: 12px;
+  padding: 10px 0;
+  font-size: 1rem;
   margin-top: 20px;
   border: none;
   border-radius: 8px;
@@ -127,13 +120,6 @@
 
 .login-form button:hover {
   background-color: #ffe066;
-}
-
-.signup-prompt {
-  margin-top: 20px;
-  text-align: center;
-  font-size: 0.92rem;
-  color: #f5e1ff;
 }
 
 .signup-prompt a {
@@ -163,6 +149,7 @@ input {
   color: #fcd34d;
   text-decoration: none;
 }
+
 .signup-link:hover {
   color: #f2bd0f;
 }
@@ -210,7 +197,7 @@ input {
 .login-form {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 14px;
 }
 
 .login-form label {
@@ -231,14 +218,14 @@ input {
 }
 
 .login-form input:focus {
-  box-shadow: 0 0 8px 2px #d8b4fe; /* light purple glow */
+  box-shadow: 0 0 8px 2px #d8b4fe;
   background-color: rgba(255, 255, 255, 0.15);
   color: #fff;
 }
 
 .login-button {
   margin-top: 10px;
-  background: #9f7aea; /* medium purple */
+  background: #9f7aea;
   border: none;
   padding: 12px 0;
   border-radius: 10px;
@@ -251,7 +238,7 @@ input {
 }
 
 .login-button:hover {
-  background: #7c3aed; /* darker purple */
+  background: #7c3aed;
   box-shadow: 0 6px 20px #7c3aed;
 }
 
@@ -272,7 +259,6 @@ input {
   color: #f3e8ff;
 }
 
-
 /* Responsive Enhancements */
 @media (max-width: 768px) {
   .logo {
@@ -283,15 +269,25 @@ input {
 
   .app-name {
     font-size: 20px;
+    text-align: center;
+  }
+
+  .login-page {
+    padding: 20px;
+    background-position: center;
+    background-size: cover;
   }
 
   .login-container {
     width: 90%;
     padding: 30px 20px;
+    margin: 0 auto;
   }
 
   .login-box {
     padding: 30px 20px;
+    width: 90%;
+    margin: 0 auto;
   }
 
   .login-form input,
@@ -310,13 +306,20 @@ input {
     font-size: 18px;
   }
 
+  .login-page {
+    padding: 15px;
+  }
+
   .login-container {
     padding: 20px 15px;
     width: 95%;
+    margin: 0 auto;
   }
 
   .login-box {
     padding: 20px 15px;
+    width: 100%;
+    margin: 0 auto;
   }
 
   .login-form {
@@ -339,9 +342,11 @@ input {
 
   .signup-prompt {
     font-size: 0.85rem;
+    text-align: center;
   }
 
   .login-footer {
     font-size: 0.85rem;
+    text-align: center;
   }
 }

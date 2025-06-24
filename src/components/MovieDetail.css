@@ -1,0 +1,101 @@
+.movie-detail-container {
+  background: linear-gradient(135deg, #1f1f2e 0%, #121212 100%);
+  color: #e0e0e0;
+  min-height: 100vh;
+  padding: 3rem 1.5rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(100, 0, 255, 0.3);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.movie-detail-poster {
+  flex: 1 1 300px;
+  max-width: 300px;
+  border-radius: 14px;
+  box-shadow: 0 0 15px rgba(150, 0, 255, 0.6);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.movie-detail-poster:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(255, 0, 255, 0.8);
+}
+
+.movie-detail-info {
+  flex: 2 1 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.movie-detail-info h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #bb86fc;
+  margin-bottom: 0.4rem;
+  text-shadow: 0 0 10px #bb86fc;
+}
+
+.movie-detail-info p {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: #ccc;
+}
+
+.movie-detail-info strong {
+  color: #d0a9ff;
+}
+
+.download-button {
+  margin-top: 2rem;
+  background: linear-gradient(90deg, #7b2ff7, #f107a3);
+  padding: 14px 28px;
+  color: white;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 8px 15px rgba(247, 9, 239, 0.4);
+  transition: background 0.3s ease, transform 0.3s ease;
+  text-decoration: none;
+  user-select: none;
+}
+
+.download-button:hover {
+  background: linear-gradient(90deg, #f107a3, #7b2ff7);
+  transform: scale(1.05);
+  box-shadow: 0 12px 25px rgba(241, 7, 163, 0.7);
+}
+
+@media (max-width: 768px) {
+  .movie-detail-container {
+    flex-direction: column;
+    padding: 2rem 1rem;
+    max-width: 100%;
+  }
+
+  .movie-detail-poster {
+    max-width: 100%;
+    flex: unset;
+    margin: 0 auto;
+  }
+
+  .movie-detail-info {
+    flex: unset;
+  }
+
+  .movie-detail-info h1 {
+    font-size: 2rem;
+    text-align: center;
+  }
+}

@@ -1,3 +1,4 @@
+/* Full Responsive Signup Page CSS */
 
 /* Make the entire page background dark purple */
 body {
@@ -11,7 +12,7 @@ body {
 .signup-container {
   height: 100vh;
   background: url("https://png.pngtree.com/thumb_back/fh260/background/20230615/pngtree-wall-of-movie-posters-on-display-image_2949343.jpg")
-    center/cover no-repeat; /* Change to your actual image path */
+    center/cover no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,6 +23,7 @@ body {
 .app-branding {
   text-align: center;
   margin-bottom: 20px;
+  padding-left: 20px;
   display: flex;
   flex-direction: column;
 }
@@ -31,7 +33,7 @@ body {
   height: 60px;
   object-fit: contain;
   margin-bottom: 8px;
-  padding-left: 20px;
+  padding-left: 90px;
 }
 
 .app-name {
@@ -45,7 +47,7 @@ body {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 16px;
-  padding: 40px 30px;
+  padding: 25px 20px;
   width: 100%;
   max-width: 400px;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
@@ -56,41 +58,50 @@ body {
   opacity: 0;
 }
 
-/* Heading style */
+@keyframes floatIn {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .signup-form h2 {
-  margin-bottom: 1.5rem;
+  margin-bottom: 16px; 
+  font-size: 1.6rem; 
   color: #f3e8ff;
 }
+
 .gradient-text {
   text-align: center;
   background: linear-gradient(to right, #fcd34d, #a78bfa);
-  background-clip: text; /* or use an image */
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Input fields style */
 .signup-form input {
   display: block;
   width: 100%;
-  padding: 12px 15px;
-  margin-bottom: 15px;
+  padding: 8px 12px;
+  margin-bottom: 12px;
   border: 1px solid #ccc;
   border-radius: 6px;
   background-color: #635179;
   color: #eee;
-  font-size: 14px;
+  font-size: 0.95rem;
 }
 
-/* Placeholder text color */
 .signup-form input::placeholder {
   color: #d6c6f7;
 }
 
-/* Button style */
 .signup-form button {
   width: 100%;
-  padding: 12px;
+  padding: 10px 0;
   background-color: #78708e;
   color: white;
   border: none;
@@ -104,16 +115,15 @@ body {
   background-color: #ffe066;
 }
 
-/* Alternative login section */
 .alternative-login {
-  margin-top: 20px;
+  margin-top: 16px;
   text-align: center;
   color: #fff;
 }
 
-/* Login link */
 .login-link {
   color: #c645aa;
+  font-size: 0.9rem;
   text-decoration: underline;
 }
 
@@ -121,10 +131,10 @@ body {
   text-decoration: underline;
 }
 
-/* Google login button */
 .google-login-btn {
   margin-top: 10px;
-  padding: 12px;
+  padding: 10px;
+  font-size: 0.95rem;
   width: 100%;
   background: #78708e;
   border: 1px solid #ccc;
@@ -137,7 +147,6 @@ body {
 .google-login-btn:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
-
 
 /* Responsive Enhancements */
 @media (max-width: 768px) {
@@ -153,6 +162,7 @@ body {
 
   .app-name {
     font-size: 20px;
+    text-align: center;
   }
 
   .logo {
@@ -195,9 +205,11 @@ body {
 
   .app-name {
     font-size: 18px;
+    text-align: center;
   }
 
   .alternative-login {
     font-size: 0.9rem;
+    text-align: center;
   }
 }
