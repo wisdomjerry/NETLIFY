@@ -5,9 +5,9 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+import SeriesDetail from "./components/SeriesDetail";
+import EpisodeDetail from "./components/EpisodeDetail";
 import MovieDetail from "./components/MovieDetail";
-
-
 
 import SplashScreen from "./components/SplashScreen";
 import LandingPage from "./components/LandingPage";
@@ -32,12 +32,10 @@ function App() {
     if (savedUser) setUser(JSON.parse(savedUser));
   }, []);
 
-const handleLogin = (userData) => {
-  setUser(userData);
-  localStorage.setItem("user", JSON.stringify(userData));
-};
-
-
+  const handleLogin = (userData) => {
+    setUser(userData);
+    localStorage.setItem("user", JSON.stringify(userData));
+  };
 
   const handleSplashComplete = () => {
     setShowSplash(false);
@@ -74,7 +72,12 @@ const handleLogin = (userData) => {
           <Route path="/users" element={<UsersPage />} />
           {/* Add the IMDB Movies route below */}
           <Route path="/imdb" element={<AllMovies />} />
-           <Route path="/movie/:id" element={<MovieDetail />} />
+          <Route path="/movie/:id" element={<MovieDetail />} />
+          <Route path="/series/:id" element={<SeriesDetail />} />
+           <Route
+          path="/series/:id/season/:seasonNumber/episode/:episodeNumber"
+          element={<EpisodeDetail />}
+        />
         </Routes>
       )}
     </Router>
