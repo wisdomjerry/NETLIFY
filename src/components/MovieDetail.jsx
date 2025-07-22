@@ -393,10 +393,6 @@ const MovieDetail = () => {
 
         <div style={{ marginTop: "1rem", color: "#ccc", fontSize: "0.9rem" }}>
           ⚠️ Magnet links require a torrent client like qBittorrent or WebTorrent Desktop for direct download.
-          <br />
-          For streaming, this app relies on a **backend service** to convert magnet links to direct video streams.
-          <br />
-          <strong>No local TorrServer needed for streaming!</strong>
         </div>
       </div>
     </div>
