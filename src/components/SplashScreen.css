@@ -1,110 +1,89 @@
+/* SplashScreen.css */
+
+/* Base container for the splash screen */
 .splash-screen {
-  position: fixed;
+  position: fixed; /* Fixes it to the viewport */
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: 9999;
-  overflow: hidden;
+  width: 100vw; /* Full viewport width */
+  height: 100vh; /* Full viewport height */
+  display: flex; /* Use flexbox to center content */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  background-color: #1a202c; /* Fallback background color if video fails or is not ready */
+  z-index: 9999; /* Ensure it's on top of everything */
+  overflow: hidden; /* Hide any overflow from video */
+  transition: opacity 1s ease-out; /* Smooth fade-out transition */
 }
 
+/* Fade-out effect */
+.splash-screen.fade-out {
+  opacity: 0;
+  visibility: hidden; /* Hide element completely after fade */
+  pointer-events: none; /* Disable interactions after fade */
+}
+
+/* Video background styling */
 .splash-video {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
   top: 0;
   left: 0;
-  z-index: 1; /* Video behind everything else */
-}
-
-.splash-overlay {
-  position: relative;
-  z-index: 2; /* Ensures it's on top of the video */
-  height: 100%;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.4); /* Optional dark overlay */
-  display: grid; /* 👉 Applied grid */
-  place-items: center; /* 👉 Centers content in grid */
-  color: rgb(206, 18, 18);
-  /* padding: 1rem; */
-  text-align: center;
+  height: 100%;
+  object-fit: cover; /* Ensures the video covers the entire area without distortion */
+  z-index: -1; /* Puts the video behind the overlay content */
+  filter: brightness(0.5); /* Darken the video to make text more readable */
 }
 
+/* Overlay for logo and title */
+.splash-overlay {
+  display: flex; /* Use flexbox for logo and title */
+  flex-direction: column; /* Stack logo and title vertically */
+  align-items: center; /* Center items horizontally within the column */
+  justify-content: center; /* Center items vertically within the overlay */
+  text-align: center; /* Ensure text is centered */
+  color: white; /* Text color */
+  padding: 20px; /* Add some padding */
+  z-index: 1; /* Ensure it's above the video */
+}
+
+/* Logo styling */
 .splash-logo {
-  width: 100px;
-  /* margin-bottom: 1rem; */
-  animation: zoomIn 1s ease-in-out;
+  max-width: 120px; /* Default size for mobile */
+  height: auto;
+  border-radius: 50%; /* If you want a circular logo */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+  margin-bottom: 15px; /* Space between logo and title */
 }
 
+/* Title styling */
 .splash-title {
-  font-size: 2.5rem;
+  font-family: 'Inter', sans-serif; /* Ensure Inter font is applied */
+  font-size: 2.5em; /* Default font size for mobile */
   font-weight: bold;
-  letter-spacing: 2px;
-  animation: fadeIn 1s ease-in-out;
+  color: #63b3ed; /* A nice blue color */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add text shadow for readability */
 }
 
-/* Fade-out animation */
-.fade-out {
-  animation: fadeOutSplash 1s forwards ease-in-out;
-}
-
-@keyframes fadeOutSplash {
-  0% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1.05);
-  }
-}
-
-@keyframes zoomIn {
-  0% {
-    transform: scale(0.5);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Responsive Enhancements */
-@media (max-width: 768px) {
-  .splash-title {
-    font-size: 2rem;
-    letter-spacing: 1.5px;
-  }
-
+/* Responsive adjustments for larger screens (e.g., tablets and desktops) */
+@media (min-width: 768px) {
   .splash-logo {
-    width: 80px;
+    max-width: 200px; /* Larger logo on bigger screens */
+    margin-bottom: 25px;
+  }
+
+  .splash-title {
+    font-size: 4em; /* Larger title on bigger screens */
   }
 }
 
-@media (max-width: 480px) {
-  .splash-title {
-    font-size: 1.6rem;
-    letter-spacing: 1px;
-  }
-
+/* Even larger screens (e.g., large desktops) */
+@media (min-width: 1024px) {
   .splash-logo {
-    width: 60px;
+    max-width: 250px;
   }
 
-  .splash-overlay {
-    padding: 0.5rem;
+  .splash-title {
+    font-size: 5em;
   }
 }

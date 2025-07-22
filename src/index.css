@@ -1,5 +1,11 @@
 /* Full Responsive Signup Page CSS */
+/* src/index.css or public/index.html */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
+/* Add other global styles or Tailwind directives if you use them */
+/* @tailwind base; */
+/* @tailwind components; */
+/* @tailwind utilities; */
 /* Make the entire page background dark purple */
 body {
   background-color: #9f97a9;
