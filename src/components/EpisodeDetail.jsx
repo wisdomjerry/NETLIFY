@@ -6,7 +6,7 @@ import { Download, Play } from "lucide-react"; // Import Play icon
 const TMDB_API_KEY = "688fd03556ed51e7944c50c4783c6023";
 // Define your backend URL here. If running locally, it's http://localhost:3001
 // If deployed, replace with your VPS IP or domain.
-const BACKEND_URL = "http://localhost:3001"; 
+const BACKEND_URL = "https://my-series-api-backend.onrender.com"; 
 
 const EpisodeDetail = () => {
   const { id, seasonNumber, episodeNumber } = useParams();
