@@ -5,15 +5,16 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import SeriesDetail from "./components/SeriesDetail";
-import EpisodeDetail from "./components/EpisodeDetail";
-import MovieDetail from "./components/MovieDetail";
+
 
 import SplashScreen from "./components/SplashScreen";
 import LandingPage from "./components/LandingPage";
 import LoginPage from "./components/LoginPage";
 import SignupForm from "./components/SignupForm";
-import AllMovies from "./components/allMovies";
+import MediaGallery from "./components/MediaGallery"; // Renamed import alias from AllMovies to MediaGallery
+import SeriesDetail from "./components/SeriesDetail";
+import EpisodeDetail from "./components/EpisodeDetail";
+import MovieDetail from "./components/MovieDetail";
 import AdminDashboard from "./components/AdminDashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AnalyticsPage from "./components/AnalyticsPage";
@@ -51,10 +52,10 @@ function App() {
           <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
           <Route path="/signup" element={<SignupForm />} />
           <Route
-            path="/movies"
+            path="/movies" // This route will now display the combined MediaGallery
             element={
               user ? (
-                <AllMovies user={user} />
+                <MediaGallery user={user} /> // Use MediaGallery here
               ) : (
                 <Navigate to="/login" replace />
               )
@@ -70,14 +71,15 @@ function App() {
           />
           <Route path="/analytics" element={<AnalyticsPage />} />
           <Route path="/users" element={<UsersPage />} />
-          {/* Add the IMDB Movies route below */}
-          <Route path="/imdb" element={<AllMovies />} />
+          {/* The /imdb route also points to the MediaGallery now */}
+          <Route path="/imdb" element={<MediaGallery />} />
+          {/* Existing detail routes for movies, series, and episodes */}
           <Route path="/movie/:id" element={<MovieDetail />} />
-          <Route path="/series/:id" element={<SeriesDetail />} />
-           <Route
-          path="/series/:id/season/:seasonNumber/episode/:episodeNumber"
-          element={<EpisodeDetail />}
-        />
+          <Route path="/tv/:id" element={<SeriesDetail />} /> {/* Changed from /series/:id to /tv/:id to match MediaGallery's dynamic linking */}
+          <Route
+            path="/tv/:id/season/:seasonNumber/episode/:episodeNumber" // Changed from /series to /tv
+            element={<EpisodeDetail />}
+          />
         </Routes>
       )}
     </Router>

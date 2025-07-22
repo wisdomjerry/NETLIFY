@@ -2,12 +2,30 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/netflix-icon.svg" />
+    <link rel="icon" type="image/jfif" href="/pelikula.jfif" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NETLIFY</title>
+ 
+
+
+    <!-- ✅ Webtor Player Script (required for #webtor-player div) -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@webtor/player-sdk-js/dist/index.min.js"
+      charset="utf-8"
+      async
+    ></script>
+
+    <title>Pelikula</title>
   </head>
   <body>
     <div id="root"></div>
+
+    <!-- ❌ You can remove this if not embedding via iframe -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@webtor/embed-sdk-js/dist/index.min.js"
+      charset="utf-8"
+      async
+    ></script>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

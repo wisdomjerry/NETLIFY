@@ -24,8 +24,8 @@ function SplashScreen({ onComplete }) {
         playsInline
       />
       <div className="splash-overlay">
-        <img src="/netflix-icon.svg" alt="NETLIFY Logo" className="splash-logo" />
-        <h1 className="splash-title">NETLIFY</h1>
+        <img src="/pelikula.jfif" alt="Pelikula Logo" className="splash-logo" />
+        <h1 className="splash-title">Pelikula </h1>
       </div>
     </div>
   );

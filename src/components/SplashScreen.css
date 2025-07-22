@@ -27,13 +27,13 @@
   display: grid; /* 👉 Applied grid */
   place-items: center; /* 👉 Centers content in grid */
   color: rgb(206, 18, 18);
-  padding: 1rem;
+  /* padding: 1rem; */
   text-align: center;
 }
 
 .splash-logo {
   width: 100px;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
   animation: zoomIn 1s ease-in-out;
 }
 

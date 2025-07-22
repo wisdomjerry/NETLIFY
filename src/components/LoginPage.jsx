@@ -45,8 +45,8 @@ const LoginPage = ({ onLogin }) => {
     <div className="login-page">
       <div className="login-form">
         <div className="app-branding">
-          <img src="/netflix-icon.svg" alt="Movie App Logo" className="logo" />
-          <h1 className="app-name">NETLIFY</h1>
+          <img src="/pelikula.jfif" alt="Movie App Logo" className="logo" />
+          <h1 className="app-name">Pelikula</h1>
         </div>
 
         <div className="login-box">
@@ -87,3 +87,5 @@ const LoginPage = ({ onLogin }) => {
 };
 
 export default LoginPage;
+
+

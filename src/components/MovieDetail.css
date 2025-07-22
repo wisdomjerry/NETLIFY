@@ -99,3 +99,91 @@
     text-align: center;
   }
 }
+.md-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2rem;
+  color: #eee;
+  background-color: #121212;
+  border-radius: 12px;
+  gap: 2rem;
+}
+
+.md-poster-section {
+  flex: 1 1 300px;
+  text-align: center;
+}
+
+.md-poster {
+  width: 100%;
+  border-radius: 8px;
+  max-width: 350px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.7);
+}
+
+.md-info-section {
+  flex: 2 1 400px;
+}
+
+.md-title {
+  font-size: 2rem;
+  margin-bottom: 0.3rem;
+  color: #00d8ff;
+}
+
+.md-subtitle span {
+  margin-right: 1rem;
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+.md-genres {
+  font-style: italic;
+  color: #aaa;
+}
+
+.md-overview {
+  margin: 1rem 0;
+  line-height: 1.6;
+}
+
+.md-controls {
+  margin: 1.5rem 0;
+}
+
+.md-player {
+  width: 100%;
+  height: 500px;
+  border: none;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.md-download-btn {
+  background-color: #00d8ff;
+  color: #121212;
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.md-download-btn:hover {
+  background-color: #00b8d4;
+}
+
+.md-note,
+.md-warning {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.md-loading {
+  padding: 2rem;
+  color: #ccc;
+  text-align: center;
+}
